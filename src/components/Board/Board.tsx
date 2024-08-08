@@ -1,46 +1,43 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Square } from "../Square/Square";
-import { calculateWinner } from "../../utils/calculateWinner";
 import { GameStatus } from "../GameStatus/GameStatus";
-import { INIT_GAME_STATE } from "../../utils/initialValues";
 import { ResetButton } from "../ResetButton/ResetButton";
 import { StyledBoard, StyledWrapper } from "./Board.styles";
+import { useMachine } from "@xstate/react";
+import { gameMachine } from "../../machines/gameMachine";
 
 export const Board = () => {
-  const [IsXNext, setIsXNext] = useState<boolean>(true);
-  const [squares, setSquares] = useState<Array<string | null>>(INIT_GAME_STATE);
+  const [state, send] = useMachine(gameMachine);
 
-  function handleClick(squareIndex: number) {
-    if (calculateWinner(squares) || squares[squareIndex]) {
-      return;
-    }
-    const nextSquares = squares.slice();
+  useEffect(() => {
+    console.log(state.context);
+  }, [state.context]);
 
-    if (IsXNext) {
-      nextSquares[squareIndex] = "X";
-    } else {
-      nextSquares[squareIndex] = "O";
-    }
-
-    setSquares(nextSquares);
-    setIsXNext(!IsXNext);
-  }
+  useEffect(() => {
+    setTimeout(() => {
+      send({ type: "START" });
+    }, 1000);
+  }, [send]);
 
   return (
     <StyledWrapper>
-      <GameStatus isXNext={IsXNext} squares={squares} />
+      <GameStatus
+        isXNext={state.context.isXNext}
+        squares={state.context.squares}
+      />
       <StyledBoard>
-        {squares.map((elem, idx = 0) => {
+        {state.context.squares.map((elem, idx = 0) => {
           return (
             <Square
               key={crypto.randomUUID()}
               value={elem}
-              onSquareClick={() => handleClick(idx)}
+              onSquareClick={() => send({ type: "UPDATE", idx })}
             />
           );
         })}
       </StyledBoard>
-      <ResetButton setSquares={setSquares} />
+      <ResetButton setSquares={() => send({ type: "RESTART" })} />
+      {JSON.stringify(state.value)}
     </StyledWrapper>
   );
 };

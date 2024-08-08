@@ -9,12 +9,14 @@ interface GameStatusProps {
 export const GameStatus: React.FC<GameStatusProps> = ({ isXNext, squares }) => {
   const winner = calculateWinner(squares);
   let status;
-  if (winner === "Draw") {
-    status = "Draw";
+
+  if (winner == "Draw") {
+    status = "Draw!!!";
   } else if (winner) {
-    status = "Winner: " + winner;
+    status = `Winner is ${winner}`;
   } else {
-    status = "Next player: " + (isXNext ? "X" : "O");
+    status = `Next player: ${isXNext ? "X" : "O"}`;
   }
+
   return <StyledGameStatus>{status}</StyledGameStatus>;
 };
