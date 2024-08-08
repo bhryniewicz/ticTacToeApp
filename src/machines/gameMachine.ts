@@ -47,10 +47,6 @@ export const gameMachine = createMachine(
           squares: INIT_GAME_STATE,
         };
       }),
-      announceResult: assign(() => {
-        console.log("end");
-        return {};
-      }),
     },
     guards: {
       didWin: ({ context }) => {
