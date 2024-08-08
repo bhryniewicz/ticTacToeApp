@@ -14,9 +14,7 @@ export const Board = () => {
   }, [state.context]);
 
   useEffect(() => {
-    setTimeout(() => {
-      send({ type: "START" });
-    }, 1000);
+    send({ type: "START" });
   }, [send]);
 
   return (
@@ -29,7 +27,8 @@ export const Board = () => {
         {state.context.squares.map((elem, idx = 0) => {
           return (
             <Square
-              key={crypto.randomUUID()}
+              testId={`square-${idx}`}
+              key={`square-${idx}`}
               value={elem}
               onSquareClick={() => send({ type: "UPDATE", idx })}
             />

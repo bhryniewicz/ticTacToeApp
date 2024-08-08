@@ -13,7 +13,7 @@ export const GameStatus: React.FC<GameStatusProps> = ({ isXNext, squares }) => {
   if (winner == "Draw") {
     status = "Draw!!!";
   } else if (winner) {
-    status = `Winner is ${winner}`;
+    status = `Winner is: ${winner}`;
   } else {
     status = `Next player: ${isXNext ? "X" : "O"}`;
   }

@@ -5,6 +5,18 @@ export const StyledBoard = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  animation: fade 1s forwards;
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const StyledWrapper = styled.div`
