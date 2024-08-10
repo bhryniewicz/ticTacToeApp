@@ -10,10 +10,6 @@ export const Board = () => {
   const [state, send] = useMachine(gameMachine);
 
   useEffect(() => {
-    console.log(state.context);
-  }, [state.context]);
-
-  useEffect(() => {
     send({ type: "START" });
   }, [send]);
 
@@ -36,7 +32,6 @@ export const Board = () => {
         })}
       </StyledBoard>
       <ResetButton setSquares={() => send({ type: "RESTART" })} />
-      {JSON.stringify(state.value)}
     </StyledWrapper>
   );
 };

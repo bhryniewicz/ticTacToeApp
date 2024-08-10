@@ -11,7 +11,9 @@ export const calculateWinner = (squares: Array<string | null>) => {
   ];
 
   for (let i = 0; i < lines.length; i++) {
+    // much more clearer way to see the elements inside array
     const [a, b, c] = lines[i];
+    // long condiotion so in const
     const areTheyInTheSameLine =
       squares[a] && squares[a] === squares[b] && squares[a] === squares[c];
 
@@ -20,6 +22,7 @@ export const calculateWinner = (squares: Array<string | null>) => {
     }
   }
 
+  // check after whole loop is done
   if (!squares.includes(null)) {
     return "Draw";
   }
