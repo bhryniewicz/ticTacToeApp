@@ -16,7 +16,7 @@ export const Square: React.FC<SquareProps> = ({
 
   return (
     <StyledSquare
-      //add jsut to test some cases in tests
+      //add just to test some cases in tests
       data-testid={testId}
       onClick={(e) => {
         onSquareClick(e);
