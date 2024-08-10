@@ -8,12 +8,12 @@ const flash = keyframes`
   from {
       opacity: 0;
       font-size: 0.5rem;
-      }
+  }
 
-      to {
+  to {
       opacity: 1;
       font-size: 2.5rem;
-      }
+  }
 `;
 
 export const StyledSquare = styled.button`
@@ -22,13 +22,17 @@ export const StyledSquare = styled.button`
   background-color: #242424;
   border: none;
   color: #fff;
-  outline: none;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const StyledSpan = styled.span<StyledSpanProps>`
   width: 100px;
   height: 100px;
   font-size: 2.5rem;
+  //props added to execute animation in good time
   animation: ${(props) =>
     props.$animate &&
     css`

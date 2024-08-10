@@ -6,6 +6,7 @@ export const StyledBoard = styled.div`
   gap: 10px;
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
+  //end animation at its end and not come to start value
   animation: fade 1s forwards;
 
   @keyframes fade {
