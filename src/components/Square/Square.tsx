@@ -13,8 +13,10 @@ export const Square: React.FC<SquareProps> = ({
   onSquareClick,
 }) => {
   const [doAnimate, setDoAnimate] = useState<boolean>(false);
+
   return (
     <StyledSquare
+      //add just to test some cases in tests
       data-testid={testId}
       onClick={(e) => {
         onSquareClick(e);

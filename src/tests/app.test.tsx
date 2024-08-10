@@ -8,7 +8,7 @@ import { Board } from "../components/Board/Board";
 const user = userEvent.setup();
 
 describe("calculateWinner", () => {
-  test("should return the winner if a player wins", () => {
+  test("should return the winner 'X' if a player wins", () => {
     const squares = ["X", "X", "X", null, null, null, null, null, null];
     expect(calculateWinner(squares)).toBe("X");
   });
@@ -19,6 +19,7 @@ describe("calculateWinner", () => {
   });
 });
 
+// render Board component and then take one of squares and click it two times just to be sure that square cant' change its value
 describe("Board behavior", () => {
   test("check if user click 2 times at the same field and value doesn't change", async () => {
     render(<Board />);

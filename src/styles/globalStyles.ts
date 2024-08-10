@@ -1,5 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
+// for app styles
 export const GlobalStyle = createGlobalStyle`
   body {
     display: flex;

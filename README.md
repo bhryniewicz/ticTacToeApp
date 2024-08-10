@@ -1,12 +1,3 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 ## Staring application
 
 All you need to do is:
@@ -22,8 +13,22 @@ And to test the app:
 npm run test
 ```
 
-## Expanding the ESLint configuration
+## Approach and design decisions
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Divide structure of the app into:
+  - components - in every folder there is 2 files: one for component and one for styles
+  - utils - utils values / functions
+  - tests - test for some functionalities
+  - styles - for global styles of app
+  - machine - for xstate machine
 
-- Configure the top-level `parserOptions` property like this:
+Structure looks like this mostly cause of simplicity and readability, naming of files is self explanatory. And project is easy to scale up.
+
+Interfaces of components are inside component file, cause they are small and its much faster to read them.
+
+For styling every file is named '.styles.ts' because usually developers use this convention with style-components and it is easy to find.
+
+Also every component is named 'Styled[x]' cause of convention
+
+Using 'rem' values cause it's easy to divide with 'x4'
+For props to styled compnents add '$' before prop
