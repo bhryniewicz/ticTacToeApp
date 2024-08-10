@@ -31,4 +31,4 @@ For styling every file is named '.styles.ts' because usually developers use this
 Also every component is named 'Styled[x]' cause of convention
 
 Using 'rem' values cause it's easy to divide with 'x4'
-For props to styled compnents add '$' before prop
+For props to styled components add '$' before prop
